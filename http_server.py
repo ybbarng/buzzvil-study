@@ -14,9 +14,8 @@ class HttpServer(asyncio.Protocol):
 
         if received.lower().startswith('get /index.html'):
             response = self.get_index_html()
-
-        self.transport.write(response.encode())
-        print(f'{self.peername} << html is sent')
+            self.transport.write(response.encode())
+            print(f'{self.peername} << html is sent')
 
     def get_index_html(self):
         with open('index.html') as f:
